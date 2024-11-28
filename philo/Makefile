@@ -191,10 +191,6 @@ get_log:
 		tail -f gdb.txt; \
 	fi
 
-vgdb_pid: $(NAME) $(TEMP_PATH)
-	printf "target remote | vgdb --pid=" > $(TEMP_PATH)/gdb_commands.txt
-	printf "$(shell pgrep -f valgrind)" >> $(TEMP_PATH)/gdb_commands.txt
-
 ##@ Clean-up Rules 󰃢
 
 clean: 				## Remove object files
