@@ -47,27 +47,28 @@ Dijkstra’s work highlights the evolution of computing from strictly sequential
 
 The Dining Philosophers Problem emerged as a thought experiment to illustrate the challenges inherent in concurrency. The problem's simplicity—embodied in the imagery of philosophers and chopsticks—belies the complexity of managing synchronization and preventing issues like:
 
--- Deadlock: A situation where every philosopher simultaneously picks up one chopstick and waits for the other, causing the system to freeze indefinitely.
--- Starvation: A condition where a philosopher perpetually fails to acquire both chopsticks due to unfair allocation of resources.
--- Livelock: Philosophers repeatedly attempting and failing to acquire chopsticks due to over-cautious synchronization mechanisms.
--- Theoretical Foundations
+- Deadlock: A situation where every philosopher simultaneously picks up one chopstick and waits for the other, causing the system to freeze indefinitely.
+- Starvation: A condition where a philosopher perpetually fails to acquire both chopsticks due to unfair allocation of resources.
+- Livelock: Philosophers repeatedly attempting and failing to acquire chopsticks due to over-cautious synchronization mechanisms.
+
+## 1.2. Theoretical Foundations
 
 As outlined by Ramadhan and Siahaan (2016) in their exploration of concurrency within operating systems, the Dining Philosophers Problem is a metaphor for the challenges faced by multitasking operating systems. These systems must enable multiple processes to execute concurrently while ensuring proper synchronization and resource allocation.
 
 Concurrency is the bedrock of modern operating systems. It allows multiple processes to share system resources, such as CPU time, memory, and I/O devices. However, as processes interact, synchronization becomes critical to ensure data integrity and system stability. The Dining Philosophers Problem serves as a microcosm of these interactions, highlighting key issues:
 
--- Synchronization: Philosophers must coordinate their actions (picking up and putting down chopsticks) without explicit communication.
--- Mutual Exclusion: Chopsticks can only be held by one philosopher at a time, reflecting the exclusivity required for certain resources.
-== Avoidance of Deadlock and Starvation: The system must ensure that no philosopher is perpetually blocked from eating.
+- Synchronization: Philosophers must coordinate their actions (picking up and putting down chopsticks) without explicit communication.
+- Mutual Exclusion: Chopsticks can only be held by one philosopher at a time, reflecting the exclusivity required for certain resources.
+- Avoidance of Deadlock and Starvation: The system must ensure that no philosopher is perpetually blocked from eating.
 
-## 1.2. Approaches to the Problem
+## 1.3. Approaches to the Problem
 
 Several algorithms have been proposed to solve the Dining Philosophers Problem, each with its trade-offs:
 
--- Resource Hierarchies: Assigning priorities to chopsticks ensures that philosophers always pick them up in a predefined order, preventing circular wait conditions that lead to deadlocks.
--- Asymmetric Solutions: Introducing asymmetry, such as having one philosopher pick up their right chopstick first while others pick up their left, breaks symmetry and avoids deadlocks.
--- Timed Waiting: Philosophers give up their chopsticks after a certain period if unable to acquire both, reducing the likelihood of prolonged contention.
--- Semaphores and Monitors: Advanced synchronization primitives like semaphores (introduced by Dijkstra himself) or monitors can control access to chopsticks, ensuring mutual exclusion and fairness.
+- Resource Hierarchies: Assigning priorities to chopsticks ensures that philosophers always pick them up in a predefined order, preventing circular wait conditions that lead to deadlocks.
+- Asymmetric Solutions: Introducing asymmetry, such as having one philosopher pick up their right chopstick first while others pick up their left, breaks symmetry and avoids deadlocks.
+- Timed Waiting: Philosophers give up their chopsticks after a certain period if unable to acquire both, reducing the likelihood of prolonged contention.
+- Semaphores and Monitors: Advanced synchronization primitives like semaphores (introduced by Dijkstra himself) or monitors can control access to chopsticks, ensuring mutual exclusion and fairness.
 
 The Dining Philosophers Problem is more than an abstract puzzle; it encapsulates real-world challenges in operating systems, distributed computing, and even human resource management. Modern applications include:
 
