@@ -107,6 +107,7 @@ a philosopher dies of starvation.
 • Philosophers don’t know if another philosopher is about to die.
 • No need to say that philosophers should avoid dying
 ```
+Before deep diving in this problem, we need to discuss a little bit more about very fundamental concepts: **Threads** and **Mutexes**
 
 # 2. Threads
 
