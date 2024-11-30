@@ -37,6 +37,25 @@ Threads and mutexes
 
 # 1. The Dining philosophers problem
 
+
+Dijkstra, Edsger (1971). Hierarchiacal Ordering of Sequentioal Processes. Acts Informatica I.
+
+
+"The processing unit of a working computer performs in a short period of time a sequence of millions of instructions and as far as the processing unit is concerned this sequence is extremely monotonous:
+it just performs instructions one after the other."
+
+"In the very old days, machines were strictly sequential, they were controlled by what was called "a program" but could be called very adequately a "a sequential program" (...)
+With the advent of higher electronic speeds the discrepancy in speed between the central processor on the one hand and the peripheral devices on the other became more pronouced.
+As a result there came for instance a strong economic pressure to arrange matters in such a way that two or more peripherals could be running simultaneously"
+
+Ramadhan, Z. & Siahaan, A. (2016). Dining Philosophers Theory and Concept in Operatin System Scheduling. 
+
+The operating system is aprogram that links the user and the computer system. This operating system must be capable of controlling resource usage. In the process of desining the OS,
+there is a common foundation called concurrency. Concurrent processes are when the processes work at the same time. This is called the multitasking operating system.
+Processes require synchronization to interact properly. However, the concurrent process that interact, there are some problems to be solbes such as deadlock and synchronization.
+One of the classic problems that can illustrate the problem is the Dining Philosophers Problem.
+
+
 # 2. Threads
 
 # 3. Mutexes
