@@ -34,6 +34,20 @@
 //								STRUCTS                                       //
 // ========================================================================== //
 
+//forks structs
+typedef struct s_fork {
+
+}		t_fork;
+
+//philosophers struct
+typedef struct s_philo {
+
+	//philosophers id
+	//time to eat
+	//time to sleep
+	//time to think
+
+}	t_philo;
 
 // ========================================================================== //
 //								FUNCTIONS                                     //
