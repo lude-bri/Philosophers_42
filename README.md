@@ -29,7 +29,7 @@ We are going to work with concurrent algorithm, threads, mutexes and data racing
         <li><a href="#14-42-version-of-the-dining-philosophers-problem">1.4. 42 version of the Dining Philosophers Problem</a></li>
     </ul>
     <li><strong><a href="#2-threads" style="color:white">2. Threads</a></strong></li>
-    < <ul style="list-style-type:disc">
+    <ul style="list-style-type:disc">
         <li><a href="#21-origins-and-context">2.1. Origins and Context</a></li>
         <li><a href="#22-theoretical-foundations">2.2. Theoretical Foundations</a></li>
     </ul>
