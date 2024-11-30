@@ -37,23 +37,46 @@ Threads and mutexes
 
 # 1. The Dining philosophers problem
 
+The Dining Philosophers Problem is a classic concurrency challenge introduced by Edsger W. Dijkstra in his seminal 1971 paper, Hierarchical Ordering of Sequential Processes (Acta Informatica I). It has since become a cornerstone in understanding synchronization and resource allocation in concurrent systems.
 
-Dijkstra, Edsger (1971). Hierarchiacal Ordering of Sequentioal Processes. Acts Informatica I.
+At its core, the problem is deceptively simple: five philosophers sit around a circular table, alternating between two activities—thinking and eating. To eat, a philosopher must acquire two chopsticks (or forks), one on their left and one on their right. However, each chopstick is shared with their neighboring philosopher. This setup creates a system of shared resources that must be managed to avoid deadlock, starvation, or resource contention.
 
+## 1.1. Origins and Context
 
-"The processing unit of a working computer performs in a short period of time a sequence of millions of instructions and as far as the processing unit is concerned this sequence is extremely monotonous:
-it just performs instructions one after the other."
+Dijkstra’s work highlights the evolution of computing from strictly sequential operations to systems where concurrency became a necessity. As he noted, the increasing speed of central processors compared to peripheral devices introduced a strong economic incentive to allow multiple processes to operate simultaneously. This shift demanded novel approaches to handle shared resources effectively, especially in scenarios where processes might compete for access.
 
-"In the very old days, machines were strictly sequential, they were controlled by what was called "a program" but could be called very adequately a "a sequential program" (...)
-With the advent of higher electronic speeds the discrepancy in speed between the central processor on the one hand and the peripheral devices on the other became more pronouced.
-As a result there came for instance a strong economic pressure to arrange matters in such a way that two or more peripherals could be running simultaneously"
+The Dining Philosophers Problem emerged as a thought experiment to illustrate the challenges inherent in concurrency. The problem's simplicity—embodied in the imagery of philosophers and chopsticks—belies the complexity of managing synchronization and preventing issues like:
 
-Ramadhan, Z. & Siahaan, A. (2016). Dining Philosophers Theory and Concept in Operatin System Scheduling. 
+-- Deadlock: A situation where every philosopher simultaneously picks up one chopstick and waits for the other, causing the system to freeze indefinitely.
+-- Starvation: A condition where a philosopher perpetually fails to acquire both chopsticks due to unfair allocation of resources.
+-- Livelock: Philosophers repeatedly attempting and failing to acquire chopsticks due to over-cautious synchronization mechanisms.
+-- Theoretical Foundations
 
-The operating system is aprogram that links the user and the computer system. This operating system must be capable of controlling resource usage. In the process of desining the OS,
-there is a common foundation called concurrency. Concurrent processes are when the processes work at the same time. This is called the multitasking operating system.
-Processes require synchronization to interact properly. However, the concurrent process that interact, there are some problems to be solbes such as deadlock and synchronization.
-One of the classic problems that can illustrate the problem is the Dining Philosophers Problem.
+As outlined by Ramadhan and Siahaan (2016) in their exploration of concurrency within operating systems, the Dining Philosophers Problem is a metaphor for the challenges faced by multitasking operating systems. These systems must enable multiple processes to execute concurrently while ensuring proper synchronization and resource allocation.
+
+Concurrency is the bedrock of modern operating systems. It allows multiple processes to share system resources, such as CPU time, memory, and I/O devices. However, as processes interact, synchronization becomes critical to ensure data integrity and system stability. The Dining Philosophers Problem serves as a microcosm of these interactions, highlighting key issues:
+
+-- Synchronization: Philosophers must coordinate their actions (picking up and putting down chopsticks) without explicit communication.
+-- Mutual Exclusion: Chopsticks can only be held by one philosopher at a time, reflecting the exclusivity required for certain resources.
+== Avoidance of Deadlock and Starvation: The system must ensure that no philosopher is perpetually blocked from eating.
+
+## 1.2. Approaches to the Problem
+
+Several algorithms have been proposed to solve the Dining Philosophers Problem, each with its trade-offs:
+
+-- Resource Hierarchies: Assigning priorities to chopsticks ensures that philosophers always pick them up in a predefined order, preventing circular wait conditions that lead to deadlocks.
+-- Asymmetric Solutions: Introducing asymmetry, such as having one philosopher pick up their right chopstick first while others pick up their left, breaks symmetry and avoids deadlocks.
+-- Timed Waiting: Philosophers give up their chopsticks after a certain period if unable to acquire both, reducing the likelihood of prolonged contention.
+-- Semaphores and Monitors: Advanced synchronization primitives like semaphores (introduced by Dijkstra himself) or monitors can control access to chopsticks, ensuring mutual exclusion and fairness.
+
+The Dining Philosophers Problem is more than an abstract puzzle; it encapsulates real-world challenges in operating systems, distributed computing, and even human resource management. Modern applications include:
+
+Database Management: Ensuring that transactions do not conflict when accessing shared data.
+Network Protocols: Managing contention for bandwidth or channels in communication systems.
+Embedded Systems: Allocating limited hardware resources in devices like printers or medical equipment.
+
+By examining the problem through the lens of concurrency theory, we gain a deeper understanding of the delicate balance required to manage shared resources effectively.
+
 
 
 # 2. Threads
