@@ -45,7 +45,14 @@ Threads and mutexes
 
 # Conclusion
 
-# Sources
+---
 
-# License
+## Sources
+
+---
+### License
+
+This work is published under the terms of <a href="https://github.com/lude-bri/42_Common_Core/blob/main/LICENSE.md">42 Unlicense</a>
+
+<p align="right">(<a href="#readme-top">get to top</a>)</p>
 
