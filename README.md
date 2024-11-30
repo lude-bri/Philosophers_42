@@ -143,6 +143,32 @@ However, this concurrency introduces challenges, including:
 - Starvation: Threads with lower priority or limited access to resources may be perpetually blocked, leading to unfair execution.
 - Overhead: While lighter than processes, threads still introduce overhead in context switching and synchronization.
 
+In order to use threads in C, we have to use the `pthread.h` library
+
+## 2.3. pthread.h
+
+In POSIX Threads (or pthread), is an execution model that allows a program to control multiple different flows of work that overlap in time.
+
+The main purpose is to enable cuncurrent programming in C and C++ on POSIX systems.
+
+### Main features
+
+- Thread creation and termination
+- Mutexes (for data protection)
+- Condition variables (for event waiting)
+- Thread-specific data
+- Thread attributes
+
+### Common Functions
+
+- `pthread_create()`: Create a new thread
+- `pthread_create()`: Create a new thread
+- `pthread_create()`: Create a new thread
+- `pthread_create()`: Create a new thread
+- `pthread_create()`: Create a new thread
+
+
+
 # 3. Mutexes
 
 # 4. Concurrent Algorithms and Data Racing
