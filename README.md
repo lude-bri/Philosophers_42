@@ -161,13 +161,14 @@ The main purpose is to enable cuncurrent programming in C and C++ on POSIX syste
 
 ### Common Functions
 
-- `pthread_create()`: Create a new thread
-- `pthread_create()`: Create a new thread
-- `pthread_create()`: Create a new thread
-- `pthread_create()`: Create a new thread
-- `pthread_create()`: Create a new thread
+- `pthread_create()`: Create a new thread.
+- `pthread_exit()`: Terminate a thread.
+- `pthread_join()`: Wait for a specific thread to finish.
+- `pthread_mutex_lock()` & `pthread_mutex_unlock()`: Lock and Unlock a Mutex.
+- `pthread_cond_wait()` & `pthread_cond_signal()`: Wait and signal on condiotion variables.
 
-
+>[!IMPORTANT]
+> While pthread is powerful, it requires careful programming to avoid issues like deadlocks, race conditions, and other concurrency-related bugs.
 
 # 3. Mutexes
 
