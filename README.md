@@ -111,6 +111,13 @@ Before deep diving in this problem, we need to discuss a little bit more about v
 
 # 2. Threads
 
+Threads are one of the most fundamental abstractions in modern computer systems, playing a pivotal role in multitasking and concurrency. 
+
+They allow multiple sequences of instructions to execute within a single process, sharing resources while maintaining independence in execution. 
+
+The concept of threads has deep theoretical underpinnings and practical applications, making it a cornerstone of operating systems, parallel computing, and software design.
+
+
 # 3. Mutexes
 
 # 4. Concurrent Algorithms and Data Racing
