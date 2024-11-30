@@ -12,12 +12,14 @@ void	*make_coffee(void *data)
 
 int	main(int ac, char **av)
 {
-	pthread_t	barista_1;
-	pthread_t	barista_2;
+	pthread_t	baristas[10];
 
-	pthread_create(&barista_1, NULL, make_coffee, NULL);
-	pthread_create(&barista_2, NULL, make_coffee, NULL);
-	
-	pthread_join(barista_1, NULL);
-	pthread_join(barista_2, NULL);
+	for (int i = 0; i < 10; ++i)
+		pthread_create(baristas + i, NULL, make_coffee, NULL);
+
+	for (int i = 0; i < 10; ++i)
+		printf("Identifier-> %lu\n", baristas[i]);
+
+	for (int i = 0; i < 10; ++i)
+		pthread_join(baristas[i], NULL);
 }
