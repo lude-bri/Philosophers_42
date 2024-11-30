@@ -25,6 +25,9 @@ We are going to work with concurrent algorithm, threads, mutexes and data racing
     <li><strong><a href="#2-threads" style="color:white">2. Threads</a></strong></li>
     <li><strong><a href="#3-mutexes" style="color:white">3. Mutexes</a></strong></li>
     <li><strong><a href="#4-concurrent-algorithms-and-data-racing" style="color:white">4. Concurrent Algorithms and Data Racing</a></strong></li>
+    <li><strong><a href="#conclusion" style="color:white">Conclusion</a></strong></li>
+    <li><strong><a href="#sources" style="color:white">Sources</a></strong></li>
+    <li><strong><a href="#license" style="color:white">License</a></strong></li>
 </ul>
 
 <!-----------Content---------------------->
@@ -40,5 +43,9 @@ Threads and mutexes
 
 # 4. Concurrent Algorithms and Data Racing
 
+# Conclusion
 
+# Sources
+
+# License
 
