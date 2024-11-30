@@ -26,6 +26,7 @@ We are going to work with concurrent algorithm, threads, mutexes and data racing
         <li><a href="#11-origins-and-context">1.1. Origins and Context</a></li>
         <li><a href="#12-theoretical-foundations">1.2. Theoretical Foundations</a></li>
         <li><a href="#13-approaches-to-the-problem">1.3. Approaches to the Problem</a></li>
+        <li><a href="#14-42-version-of-the-dining-philosophers-problem">1.4. 42 version of the Dining Philosophers Problem</a></li>
     </ul>
     <li><strong><a href="#2-threads" style="color:white">2. Threads</a></strong></li>
     <li><strong><a href="#3-mutexes" style="color:white">3. Mutexes</a></strong></li>
@@ -77,13 +78,35 @@ Several algorithms have been proposed to solve the Dining Philosophers Problem, 
 
 The Dining Philosophers Problem is more than an abstract puzzle; it encapsulates real-world challenges in operating systems, distributed computing, and even human resource management. Modern applications include:
 
-Database Management: Ensuring that transactions do not conflict when accessing shared data.
-Network Protocols: Managing contention for bandwidth or channels in communication systems.
-Embedded Systems: Allocating limited hardware resources in devices like printers or medical equipment.
+- Database Management: Ensuring that transactions do not conflict when accessing shared data.
+-Network Protocols: Managing contention for bandwidth or channels in communication systems.
+- Embedded Systems: Allocating limited hardware resources in devices like printers or medical equipment.
 
 By examining the problem through the lens of concurrency theory, we gain a deeper understanding of the delicate balance required to manage shared resources effectively.
 
+## 1.4. 42 version of the Dining Philosophers Problem
 
+In this context, the 42 school challanges us to solve this problem. This is the 42's version of this classic computer science problem:
+
+```
+Here are the things you need to know if you want to succeed this assignment:
+• One or more philosophers sit at a round table.
+There is a large bowl of spaghetti in the middle of the table.
+• The philosophers alternatively eat, think, or sleep.
+While they are eating, they are not thinking nor sleeping;
+while thinking, they are not eating nor sleeping;
+and, of course, while sleeping, they are not eating nor thinking.
+• There are also forks on the table. There are as many forks as philosophers.
+• Because serving and eating spaghetti with only one fork is very inconvenient, a
+philosopher takes their right and their left forks to eat, one in each hand.
+• When a philosopher has finished eating, they put their forks back on the table and
+start sleeping. Once awake, they start thinking again. The simulation stops when
+a philosopher dies of starvation.
+• Every philosopher needs to eat and should never starve.
+• Philosophers don’t speak with each other.
+• Philosophers don’t know if another philosopher is about to die.
+• No need to say that philosophers should avoid dying
+```
 
 # 2. Threads
 
