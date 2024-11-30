@@ -68,7 +68,7 @@ Concurrency is the bedrock of modern operating systems. It allows multiple proce
 
 ## 1.3. Approaches to the Problem
 
-Several algorithms have been proposed to solve the Dining Philosophers Problem, each with its trade-offs:
+Several algorithms have been proposed to solve the Dining Philosophers Problem, (e.g. the Peterson's Filter Algorithm, Chandy/Misra solution and Dijkstra solution) each with its trade-offs:
 
 - Resource Hierarchies: Assigning priorities to chopsticks ensures that philosophers always pick them up in a predefined order, preventing circular wait conditions that lead to deadlocks.
 - Asymmetric Solutions: Introducing asymmetry, such as having one philosopher pick up their right chopstick first while others pick up their left, breaks symmetry and avoids deadlocks.
