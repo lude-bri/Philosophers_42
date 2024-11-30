@@ -132,7 +132,7 @@ Threads can be categorized into:
 - Kernel-Level Threads: Managed directly by the operating system kernel. They offer better integration with system resources but come with higher overhead due to kernel involvement.
 - Hybrid Models: Combine the advantages of both user-level and kernel-level threads, optimizing for performance and flexibility.
 
-## 2.2 Theoretical Foundations
+## 2.2. Theoretical Foundations
 
 Threads are a direct response to the demands of concurrency, where multiple tasks must progress simultaneously. The benefits of threads are rooted in their ability to exploit parallelism, both on single-core systems (via time slicing) and on modern multicore processors.
 
