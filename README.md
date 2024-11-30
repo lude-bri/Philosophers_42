@@ -22,6 +22,11 @@ We are going to work with concurrent algorithm, threads, mutexes and data racing
 <ul>
     <li><strong><a href="#introdution" style="color:white">Introduction</a></strong></li>
     <li><strong><a href="#1-the-dining-philosophers-problem" style="color:white">1. The dining philosophers problem</a></strong></li>
+    <ul style="list-style-type:disc">
+        <li><a href="#11-origins-and-context">1.1. Origins and Context</a></li>
+        <li><a href="#12-theoretical-foundations">1.2. Theoretical Foundations</a></li>
+        <li><a href="#13-approaches-to-the-problem">1.3. Approaches to the Problem</a></li>
+    </ul>
     <li><strong><a href="#2-threads" style="color:white">2. Threads</a></strong></li>
     <li><strong><a href="#3-mutexes" style="color:white">3. Mutexes</a></strong></li>
     <li><strong><a href="#4-concurrent-algorithms-and-data-racing" style="color:white">4. Concurrent Algorithms and Data Racing</a></strong></li>
