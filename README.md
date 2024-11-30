@@ -29,6 +29,10 @@ We are going to work with concurrent algorithm, threads, mutexes and data racing
         <li><a href="#14-42-version-of-the-dining-philosophers-problem">1.4. 42 version of the Dining Philosophers Problem</a></li>
     </ul>
     <li><strong><a href="#2-threads" style="color:white">2. Threads</a></strong></li>
+    < <ul style="list-style-type:disc">
+        <li><a href="#21-origins-and-context">2.1. Origins and Context</a></li>
+        <li><a href="#22-theoretical-foundations">2.2. Theoretical Foundations</a></li>
+    </ul>
     <li><strong><a href="#3-mutexes" style="color:white">3. Mutexes</a></strong></li>
     <li><strong><a href="#4-concurrent-algorithms-and-data-racing" style="color:white">4. Concurrent Algorithms and Data Racing</a></strong></li>
     <li><strong><a href="#conclusion" style="color:white">Conclusion</a></strong></li>
@@ -113,6 +117,31 @@ Before deep diving in this problem, we need to discuss a little bit more about v
 
 Threads are one of the most fundamental abstractions in modern computer systems, playing a pivotal role in multitasking and concurrency. They allow multiple sequences of instructions to execute within a single process, sharing resources while maintaining independence in execution. The concept of threads has deep theoretical underpinnings and practical applications, making it a cornerstone of operating systems, parallel computing, and software design.
 
+## 2.1. Origins and Context
+
+The evolution of computing hardware and software necessitated a shift from strictly sequential programs to systems capable of performing multiple tasks simultaneously. Early computers executed programs sequentially, as highlighted by Edsger W. Dijkstra in his influential works. With the advent of higher processing speeds and multitasking operating systems, the need for concurrency became evident. This led to the development of threads—a lightweight mechanism for achieving parallelism within processes.
+
+Threads were introduced to address limitations in traditional process-based multitasking, particularly the high overhead of context switching between processes. Unlike processes, threads within the same process share memory space and resources, enabling more efficient communication and synchronization. This efficiency makes threads particularly suited for modern applications requiring high performance, such as web servers, video processing, and real-time systems.
+
+### What Are Threads?
+A thread is the smallest unit of execution within a program. It operates within the context of a process, sharing its memory and resources while maintaining its own stack, program counter, and execution state. This duality—independence in execution yet shared context—makes threads both powerful and challenging to manage.
+
+Threads can be categorized into:
+
+- User-Level Threads: Managed by user-space libraries without kernel involvement. While lightweight and fast, they face challenges in integrating with system-level scheduling.
+- Kernel-Level Threads: Managed directly by the operating system kernel. They offer better integration with system resources but come with higher overhead due to kernel involvement.
+- Hybrid Models: Combine the advantages of both user-level and kernel-level threads, optimizing for performance and flexibility.
+
+## 2.2 Theoretical Foundations
+
+Threads are a direct response to the demands of concurrency, where multiple tasks must progress simultaneously. The benefits of threads are rooted in their ability to exploit parallelism, both on single-core systems (via time slicing) and on modern multicore processors.
+
+However, this concurrency introduces challenges, including:
+
+- Synchronization: Threads within the same process share memory, leading to potential data races and inconsistencies if not properly synchronized. Mechanisms like mutexes, semaphores, and condition variables are used to ensure thread-safe operations.
+- Deadlock: When threads compete for resources in a circular dependency, they can become stuck indefinitely. Avoiding deadlock requires careful resource allocation and management.
+- Starvation: Threads with lower priority or limited access to resources may be perpetually blocked, leading to unfair execution.
+- Overhead: While lighter than processes, threads still introduce overhead in context switching and synchronization.
 
 # 3. Mutexes
 
