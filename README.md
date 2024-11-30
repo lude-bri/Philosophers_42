@@ -170,6 +170,16 @@ The main purpose is to enable cuncurrent programming in C and C++ on POSIX syste
 >[!IMPORTANT]
 > While pthread is powerful, it requires careful programming to avoid issues like deadlocks, race conditions, and other concurrency-related bugs.
 
+### Data type
+
+The `pthread_t` data type is an identifier used by the POSIX threads library to uniquely identify threads. Its actual implementation is platform and implementation-dependent, as the POSIX standard doesn't dictate how it must be implemented, only how it should behave.
+
+In many systems:
+
+- `pthread_t` is often implemented as an opaque type, which might be a simple integer, pointer, or a more complex type.
+- Underneath, this identifier typically points to or represents data structures containing all information related to a particular thread, such as its stack, state and attributes.
+
+
 # 3. Mutexes
 
 # 4. Concurrent Algorithms and Data Racing
