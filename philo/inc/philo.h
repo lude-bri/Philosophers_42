@@ -58,7 +58,7 @@ typedef struct s_philo
 
 	//philosophers id
 	int			id;
-	pthread_t	thread_id;
+	pthread_t	*thread_id;
 
 	//left fork
 	t_fork		*left_fork;
