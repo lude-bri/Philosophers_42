@@ -38,14 +38,7 @@
 //Philosophers alternatively eat, think or sleep
 //While they're eating, they're not thinking nor sleeping
 //While they're thinking, they're not eating nor sleeping
-//While they're sleeping, they're not 
-
-
-
-
-
-
-
+//While they're sleeping, they're not eating nor thinking
 
 typedef pthread_mutex_t t_mtx;
 typedef struct s_table	t_table;

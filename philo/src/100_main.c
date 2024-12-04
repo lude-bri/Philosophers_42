@@ -1,0 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   100_main.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: luigi <luigi@student.42porto.com>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/04 13:46:51 by luigi             #+#    #+#             */
+/*   Updated: 2024/12/04 13:47:27 by luigi            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../inc/philo.h"
+
+//each philo is a thread
+//each fork is a mutex
+
+//the idea is set by number
+//1. number of philosophers
+
+//2. time_to_die (in milliseconds): if a philo didnt start eating 
+//time_to_die milliseconds since the beginning of the last meal or
+//the beginning of the simulation, they die.
+
+//3. time_to_eat (in milliseconds): the time it takes for a philo to eat. 
+//During that time, they will need to hold two forks
+
+//4. time_to_sleep: the time a philo will spend sleeping
+
+//5. number_of_times_each_philosopher_must_eat: if all philo have eating 
+//at least number_of_times_each_philosopher_must_eat times, 
+//the simulation stops.
+// if not specified, the simulation stops when a philo dies.
+
+int	main(int ac, char **av)
+{
+	if ((ac == 4) || (ac == 5))
+	{
+		(void)av;
+		printf("OK!\n");
+	}
+	else
+		printf("Error: try ./philo time_to_die time_to_eat time_to_sleep\n");
+}

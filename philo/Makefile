@@ -28,12 +28,10 @@ _SEP 			= =====================
 #==============================================================================#
 
 SRC_PATH		= src
-LIBS_PATH		= lib
 INCLUDE_PATH	= includes
 BUILD_PATH		= .build
 TEMP_PATH		= .temp
 TESTS_PATH		= files
-LIBFT_PATH		= $(LIBS_PATH)/libft
 
 ### Files Source
 FILES = 100_main.c
@@ -43,8 +41,6 @@ SRC		= $(addprefix $(SRC_PATH)/, $(FILES))
 
 OBJS	= $(SRC:$(SRC_PATH)/%.c=$(BUILD_PATH)/%.o)
 
-### Libraries Archives
-LIBFT_ARC	= $(LIBFT_PATH)/libft.a
 
 #==============================================================================#
 #                              COMPILER & FLAGS                                #
@@ -72,18 +68,18 @@ MKDIR_P	= mkdir -p
 
 ##@ philo Compilation Rules 🏗
 
-all: deps $(BUILD_PATH) $(NAME) ## Compile Mandatory version
+all: $(BUILD_PATH) $(NAME) ## Compile Mandatory version
 
-$(NAME): $(LIBFT_ARC) $(BUILD_PATH) $(OBJS) ## Compile Mandatory version
+$(NAME): $(BUILD_PATH) $(OBJS) ## Compile Mandatory version
 	@echo "$(YEL)Compiling $(MAG)$(NAME)$(YEL) mandatory version$(D)"
-	$(CC) $(CFLAGS) $(DFLAGS) $(OBJS) $(INC) $(LIBFT_ARC) -lreadline -o $(NAME)
+	$(CC) $(CFLAGS) $(DFLAGS) $(OBJS) $(INC) -o $(NAME)
 	@echo "[$(_SUCCESS) compiling $(MAG)$(NAME)$(D) $(YEL)🖔$(D)]"
 	@make --no-print-directory norm
 
-deps:		## Download/Update deps
-	@if test ! -d "$(LIBFT_PATH)"; then make get_libft; \
-		else echo "$(YEL)[libft]$(D) folder found ✌️"; fi 
-	@echo " $(RED)$(D) [$(GRN)Nothing to be done!$(D)]"
+# deps:		## Download/Update deps
+# 	@if test ! -d "$(LIBFT_PATH)"; then make get_libft; \
+# 		else echo "$(YEL)[libft]$(D) folder found ✌️"; fi 
+# 	@echo " $(RED)$(D) [$(GRN)Nothing to be done!$(D)]"
 
 -include $(BUILD_PATH)/%.d
 
@@ -98,9 +94,6 @@ $(BUILD_PATH):
 $(TEMP_PATH):
 	$(MKDIR_P) $(TEMP_PATH)
 	@echo "* $(YEL)Creating $(CYA)$(TEMP_PATH)$(YEL) folder:$(D) $(_SUCCESS)"
-
-$(LIBFT_ARC):
-	@$(MAKE) $(LIBFT_PATH)
 
 get_libft:
 	@echo "* $(CYA)Getting Libft submodule$(D)]"
@@ -212,7 +205,7 @@ clean: 				## Remove object files
 		echo " $(RED)$(D) [$(GRN)Nothing to clean!$(D)]"; \
 	fi
 
-fclean: clean libclean			## Remove executable and .gdbinit
+fclean: clean			## Remove executable and .gdbinit
 	@if [ -f "$(NAME)" ]; then \
 		if [ -f "$(NAME)" ]; then \
 			$(RM) $(NAME); \
@@ -222,9 +215,6 @@ fclean: clean libclean			## Remove executable and .gdbinit
 		echo " $(RED)$(D) [$(GRN)Nothing to be fcleaned!$(D)]"; \
 	fi
 
-libclean: fclean	## Remove libs
-	$(RM) $(LIBS_PATH)
-	@echo "* $(YEL)Removing lib folder & files!$(D) : $(_SUCCESS)"
 
 re: fclean all	## Purge & Recompile
 
