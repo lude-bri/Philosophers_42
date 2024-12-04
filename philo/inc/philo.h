@@ -34,23 +34,64 @@
 //								STRUCTS                                       //
 // ========================================================================== //
 
-//forks structs
-typedef struct s_fork {
 
-}		t_fork;
+
+
+
+
+
+
+
+
+
+
+typedef pthread_mutex_t t_mtx;
+typedef struct s_table	t_table;
+
+//fork == mutex
+//forks structs
+typedef struct s_fork 
+{
+	t_mtx	fork;
+	int		fork_id;
+}			t_fork;
 
 //philosophers struct
-typedef struct s_philo {
+typedef struct s_philo 
+{
 
 	//philosophers id
-	//time to eat
-	//time to sleep
-	//time to think
+	int			id;
+	pthread_t	thread_id;
+
+	//left fork
+	t_fork		*left_fork;
+	//right right
+	t_fork		*right_fork;
+	
+	long		meals_counter;
+	long		last_meal_time; //check if philo has died
+	bool		full;
+	t_table		*table;
 
 }	t_philo;
+
+typedef struct s_table
+{
+	long		philo_number;
+	long		time_to_die;
+	long		time_to_sleep;
+	long		time_to_eat;
+	long		nbr_limit_meals;
+	long		start_simulation;
+	long		end_simulation;
+	t_fork		*forks;
+	t_philo		*philos;
+}				t_table;
 
 // ========================================================================== //
 //								FUNCTIONS                                     //
 // ========================================================================== //
 
 #endif
+
