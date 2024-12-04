@@ -6,7 +6,7 @@
 /*   By: luigi <luigi@student.42porto.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:46:51 by luigi             #+#    #+#             */
-/*   Updated: 2024/12/04 13:47:27 by luigi            ###   ########.fr       */
+/*   Updated: 2024/12/04 17:01:53 by luigi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,12 @@
 
 int	main(int ac, char **av)
 {
+	t_philo		philo;
+
 	if ((ac == 4) || (ac == 5))
 	{
-		init_philo(ac, av);
+		memset(&philo, 0, sizeof(t_philo));
+		init_philo(ac, av, &philo);
 	}
 	else
 		printf("Error: try ./philo time_to_die time_to_eat time_to_sleep\n");

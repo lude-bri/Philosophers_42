@@ -6,7 +6,7 @@
 /*   By: luigi <luigi@student.42porto.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:44:03 by luigi             #+#    #+#             */
-/*   Updated: 2024/12/04 16:38:53 by luigi            ###   ########.fr       */
+/*   Updated: 2024/12/04 16:57:06 by luigi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # include <unistd.h>
 # include <stdio.h>
+# include <string.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include <pthread.h>
@@ -93,10 +94,12 @@ typedef struct s_table
 // ============ //
 
 //110_init.c
-void	init_philo(int ac, char **av);
+void	init_philo(int ac, char **av, t_philo *philo);
 void	build_philo(char **av);
 void	build_philo_plus(char **av);
 
+//111_init_utils.c
+int		ft_atoi(const char *nprt);
 
 #endif
 
