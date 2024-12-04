@@ -6,7 +6,7 @@
 /*   By: luigi <luigi@student.42porto.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:26:07 by luigi             #+#    #+#             */
-/*   Updated: 2024/12/04 17:24:28 by luigi            ###   ########.fr       */
+/*   Updated: 2024/12/04 17:33:21 by luigi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,14 @@ void	build_philo(char **av, t_philo *philo)
 	int		size;
 
 	size = ft_atoi(av[1]);
-	while (size--)
-	{
-		pthread_create(philo->thread_id + size, NULL, creating_philos, NULL);
-	}
+	if (size <= 200)
+		while (size--)
+			pthread_create(philo->thread_id + size, NULL, creating_philos, NULL);
 }
 
 void	init_philo(int ac, char **av, t_philo *philo)
 {
-	if (ac == 6)
+	if (ac == 5)
 		build_philo_plus(av, philo);
 	else
 		build_philo(av, philo);
