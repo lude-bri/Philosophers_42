@@ -95,8 +95,8 @@ typedef struct s_table
 
 //110_init.c
 void	init_philo(int ac, char **av, t_philo *philo);
-void	build_philo(char **av);
-void	build_philo_plus(char **av);
+void	build_philo(char **av, t_philo *philo);
+void	build_philo_plus(char **av, t_philo *philo);
 
 //111_init_utils.c
 int		ft_atoi(const char *nprt);
