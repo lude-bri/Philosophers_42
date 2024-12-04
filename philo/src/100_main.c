@@ -36,8 +36,7 @@ int	main(int ac, char **av)
 {
 	if ((ac == 4) || (ac == 5))
 	{
-		(void)av;
-		printf("OK!\n");
+		init_philo(ac, av);
 	}
 	else
 		printf("Error: try ./philo time_to_die time_to_eat time_to_sleep\n");
