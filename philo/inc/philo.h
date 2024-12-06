@@ -92,12 +92,22 @@ typedef struct s_table
 // ============ //
 
 //110_init.c
-void	init_philo(int ac, char **av, t_philo *philo);
+void	init_philo(int ac, char **av, t_philo *philo, t_table *table);
 void	build_philo(char **av, t_philo *philo);
 void	build_philo_plus(char **av, t_philo *philo);
 
 //111_init_utils.c
 int		ft_atoi(const char *nprt);
+int		ft_atol(const char *str);
+char	sanity_check(char *str);
+bool	is_space(char c);
+
+//800_error.c
+char	error_exit(char *error_msg, int error_no);
+
+//900_free.c
+void	kill_philo(t_philo *philo, t_table *table);
+
 
 #endif
 

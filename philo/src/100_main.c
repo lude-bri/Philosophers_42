@@ -35,11 +35,13 @@
 int	main(int ac, char **av)
 {
 	t_philo		philo;
+	t_table		table;
 
 	if ((ac == 5) || (ac == 6))
 	{
 		memset(&philo, 0, sizeof(t_philo));
-		init_philo(ac, av, &philo);
+		memset(&table, 0, sizeof(t_table));
+		init_philo(ac, av, &philo, &table);
 		
 		start_philo();
 

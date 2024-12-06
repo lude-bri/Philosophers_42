@@ -45,8 +45,9 @@ void	build_philo(char **av, t_philo *philo)
 	}
 }
 
-void	init_philo(int ac, char **av, t_philo *philo)
+void	init_philo(int ac, char **av, t_philo *philo, t_table *table)
 {
+	table->philo_number = ft_atol(av[1]);
 	if (ac == 6)
 		build_philo_plus(av, philo);
 	else

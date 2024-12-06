@@ -38,3 +38,38 @@ int	ft_atoi(const char *nprt)
 	}
 	return (result * sign);
 }
+
+bool	is_space(char c)
+{
+	return ((c >= 9 && c <= 13) || (c == 32));
+}
+
+char	sanity_check(char *str)
+{
+	//check negatives
+	//check if number is legit
+	//check for INT_MAX
+	int			len;
+	const char	*number;
+
+	len = 0;
+	while (is_space(*str))
+		str++;
+	if (*str == '+')
+		str++;
+	else if (*str == '-')
+		error_exit()
+	while (*str)
+		len++;
+	if (len > 10)
+		return (NULL);
+}
+
+int	ft_atol(const char *str)
+{
+	long	number;
+
+	number = 0;
+	str = sanity_check(str);
+	return (number);
+}
