@@ -16,6 +16,8 @@ static void	*creating_philos(void *data)
 {
 	(void)data;
 	printf("A Philosopher is BORN!\n");
+	sleep(3);
+	printf("A Philosopher is TIRED!\n");
 	return (NULL);
 }
 
@@ -27,17 +29,25 @@ void	build_philo_plus(char **av, t_philo *philo)
 
 void	build_philo(char **av, t_philo *philo)
 {
-	int		size;
+	int			size;
+	int			i;
 
 	size = ft_atoi(av[1]);
+	philo->thread_id = malloc(sizeof(pthread_t) * size);
 	if (size <= 200)
-		while (size--)
-			pthread_create(philo->thread_id + size, NULL, creating_philos, NULL);
+	{	
+		i = 0;
+		while (i < size++)
+			pthread_create(philo->thread_id + i, NULL, creating_philos, NULL);
+		i = 0;
+		while (i < size++)
+			pthread_join(philo->thread_id[i], NULL);
+	}
 }
 
 void	init_philo(int ac, char **av, t_philo *philo)
 {
-	if (ac == 5)
+	if (ac == 6)
 		build_philo_plus(av, philo);
 	else
 		build_philo(av, philo);

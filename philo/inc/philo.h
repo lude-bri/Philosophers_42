@@ -55,7 +55,6 @@ typedef struct s_fork
 //philosophers struct
 typedef struct s_philo 
 {
-
 	//philosophers id
 	int			id;
 	pthread_t	*thread_id;
@@ -69,7 +68,6 @@ typedef struct s_philo
 	long		last_meal_time; //check if philo has died
 	bool		full;
 	t_table		*table;
-
 }	t_philo;
 
 typedef struct s_table
