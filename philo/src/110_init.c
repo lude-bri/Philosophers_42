@@ -37,10 +37,10 @@ void	build_philo(char **av, t_philo *philo)
 	if (size <= 200)
 	{	
 		i = 0;
-		while (i < size++)
+		while (i++ < size)
 			pthread_create(philo->thread_id + i, NULL, creating_philos, NULL);
 		i = 0;
-		while (i < size++)
+		while (i++ < size)
 			pthread_join(philo->thread_id[i], NULL);
 	}
 }
