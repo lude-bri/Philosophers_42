@@ -40,6 +40,11 @@ int	main(int ac, char **av)
 	{
 		memset(&philo, 0, sizeof(t_philo));
 		init_philo(ac, av, &philo);
+		
+		start_philo();
+
+		//when all philos are full or one died (otherwise it will be endless)
+		kill_philo();
 	}
 	else
 		printf("Error: try n_of_philo time_to_die time_to_eat time_to_sleep\n");
