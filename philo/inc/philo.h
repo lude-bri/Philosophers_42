@@ -106,15 +106,19 @@ void	philo_do(t_philo *philo, long long time, char *action);
 void	philo_eat(t_philo *philo);
 void	philo_sleep(t_philo *philo, t_table *table);
 
-
 //300_monitor.c
 int		ended_meal(t_table *table);
+void	meal_monitor(t_table *table);
+
+//310_checker.c
+int		check_philo_status(t_philo *philo);
+int		check_philo_full(t_philo *philo);
 
 //800_error.c
 void	error_exit(char *error_msg, int error_no);
 
 //900_free.c
-void	kill_philo(t_philo *philo, t_table *table);
+void	kill_philo(t_table *table);
 
 
 #endif

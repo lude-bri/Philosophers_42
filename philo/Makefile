@@ -37,6 +37,10 @@ TESTS_PATH		= files
 FILES = 100_main.c
 FILES += 110_init.c
 FILES += 111_init_utils.c
+FILES += 200_start.c
+FILES += 210_action.c
+FILES += 300_monitor.c
+FILES += 800_error.c
 
 ### Paths
 SRC		= $(addprefix $(SRC_PATH)/, $(FILES))

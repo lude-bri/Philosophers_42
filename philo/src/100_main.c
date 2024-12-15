@@ -6,7 +6,7 @@
 /*   By: luigi <luigi@student.42porto.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:46:51 by luigi             #+#    #+#             */
-/*   Updated: 2024/12/15 19:12:52 by luigi            ###   ########.fr       */
+/*   Updated: 2024/12/15 20:11:51 by luigi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int	main(int ac, char **av)
 		memset(&table, 0, sizeof(t_table));
 		init_table(av, &table);
 		start_philo(&table);
-		//when all philos are full or one died (otherwise it will be endless)
-		// kill_philo();
+		meal_monitor(&table);
+		kill_philo(&table);
 	}
 	else
 		printf("Error: try n_of_philo time_to_die time_to_eat time_to_sleep\n");

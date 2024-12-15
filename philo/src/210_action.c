@@ -6,7 +6,7 @@
 /*   By: luigi <luigi@student.42porto.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 19:49:17 by luigi             #+#    #+#             */
-/*   Updated: 2024/12/15 20:04:59 by luigi            ###   ########.fr       */
+/*   Updated: 2024/12/15 20:10:10 by luigi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,13 @@ static void	eat(t_table *table, t_philo *philo)
 	pthread_mutex_unlock(&table->forks[philo->right_fork]);
 }
 
-void	philo_sleep(t_philo *philo, t_table *table);
+void	philo_sleep(t_philo *philo, t_table *table)
+{
+	philo_do(philo, table->time_to_sleep, "is sleeping");
+	if (table->nbr_of_philos % 2)
+		philo_do(philo, table->time_to_eat, "is thinking");
+	else
+		philo_do(philo, (table->time_to_die
+		   - (table->time_to_eat + table->time_to_sleep
+				+ table->nbr_of_philos)), "is thinking");
+}
