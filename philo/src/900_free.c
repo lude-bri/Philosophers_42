@@ -1,45 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   300_monitor.c                                      :+:      :+:    :+:   */
+/*   900_free.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luigi <luigi@student.42porto.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/15 19:42:51 by luigi             #+#    #+#             */
-/*   Updated: 2024/12/15 20:38:31 by luigi            ###   ########.fr       */
+/*   Created: 2024/12/15 20:28:27 by luigi             #+#    #+#             */
+/*   Updated: 2024/12/15 20:35:59 by luigi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void	meal_monitor(t_table *table)
+void	kill_philo(t_table *table)
 {
 	int		i;
-	int		monitor;
 
-	monitor = 1;
-	while (monitor)
+	i = -1;
+	if (table->philos)
 	{
-		i = -1;
-		table->nbr_philos_full = 0;
 		while (++i < table->nbr_of_philos)
-		{
-			if (monitor && check_philo_status(&table->philos[i]))
-			{
-				monitor = 0;
-				break ;
-			}
-		}
-		usleep(100);
+			free(table->philos);
 	}
-}
-
-int	ended_meal(t_table *table)
-{
-	int		ended;
-
-	pthread_mutex_lock(&table->end_mtx);
-	ended = table->end_meal;
-	pthread_mutex_unlock(&table->end_mtx);
-	return (ended);
+	i = -1;
+	if (table->forks)
+	{
+		while (++i < table->nbr_of_philos)
+			pthread_mutex_destroy(&table->forks[i]);
+		pthread_mutex_destroy(&table->start_mtx);
+		pthread_mutex_destroy(&table->end_mtx);
+		pthread_mutex_destroy(&table->print_mtx);
+		pthread_mutex_destroy(&table->eat_mtx);
+		free(table->forks);
+	}
 }

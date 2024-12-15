@@ -41,6 +41,7 @@ FILES += 200_start.c
 FILES += 210_action.c
 FILES += 300_monitor.c
 FILES += 800_error.c
+FILES += 900_free.c
 
 ### Paths
 SRC		= $(addprefix $(SRC_PATH)/, $(FILES))

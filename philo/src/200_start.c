@@ -6,7 +6,7 @@
 /*   By: luigi <luigi@student.42porto.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 18:13:57 by luigi             #+#    #+#             */
-/*   Updated: 2024/12/15 19:48:27 by luigi            ###   ########.fr       */
+/*   Updated: 2024/12/15 20:36:58 by luigi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	start_philo(t_table *table)
 	pthread_mutex_lock(&table->start_mtx);
 	while (i++ < table->nbr_of_philos)
 	{
-		if (pthread_create(&table->philos[i].thread_id, NULL,
-					 start_meal, &table->philo[i]))
+		if (pthread_create(table->philos[i].thread_id, NULL,
+					 start_meal, &table->philos[i]))
 			error_exit("Error: philo was not created", 2);
 	}
 	pthread_mutex_unlock(&table->start_mtx);
