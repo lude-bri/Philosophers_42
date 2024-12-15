@@ -6,13 +6,13 @@
 /*   By: luigi <luigi@student.42porto.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:26:07 by luigi             #+#    #+#             */
-/*   Updated: 2024/12/15 19:05:12 by luigi            ###   ########.fr       */
+/*   Updated: 2024/12/15 19:06:13 by luigi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void	init_table(int ac, char **av, t_philo *philo, t_table *table)
+void	init_table(char **av, t_table *table)
 {
 	table->nbr_of_philos = ft_atol(av[1]);
 	table->time_to_die = ft_atol(av[2]) * 1000;

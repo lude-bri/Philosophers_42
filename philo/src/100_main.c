@@ -6,7 +6,7 @@
 /*   By: luigi <luigi@student.42porto.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:46:51 by luigi             #+#    #+#             */
-/*   Updated: 2024/12/15 18:45:29 by luigi            ###   ########.fr       */
+/*   Updated: 2024/12/15 19:06:41 by luigi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,12 @@
 
 int	main(int ac, char **av)
 {
-	t_philo		philo;
 	t_table		table;
 
 	if ((ac == 5) || (ac == 6))
 	{
-		memset(&philo, 0, sizeof(t_philo));
 		memset(&table, 0, sizeof(t_table));
-		init_table(ac, av, &philo, &table);
+		init_table(av, &table);
 		//when all philos are full or one died (otherwise it will be endless)
 		// kill_philo();
 	}

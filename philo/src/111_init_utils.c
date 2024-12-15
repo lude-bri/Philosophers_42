@@ -6,7 +6,7 @@
 /*   By: luigi <luigi@student.42porto.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:45:14 by luigi             #+#    #+#             */
-/*   Updated: 2024/12/15 18:41:16 by luigi            ###   ########.fr       */
+/*   Updated: 2024/12/15 19:07:47 by luigi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ const char	*sanity_check(const char *str)
 		error_exit("Error: it's not a correct digit", 2);
 	if (len > 10)
 		error_exit("Error: INT_MAX is the limit", 2);
+	res = str;
 	return (res);
 }
 

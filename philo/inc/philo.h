@@ -84,7 +84,7 @@ typedef struct s_table
 // ============ //
 
 //110_init.c
-void	init_table(int ac, char **av, t_philo *philo, t_table *table);
+void	init_table(char **av, t_table *table);
 void	init_philo_n_forks(t_table *table);
 void	init_mutexes(t_table *table);
 void	prepare_table(t_table *table, int i);
