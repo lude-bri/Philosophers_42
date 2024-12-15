@@ -6,7 +6,7 @@
 /*   By: luigi <luigi@student.42porto.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:45:14 by luigi             #+#    #+#             */
-/*   Updated: 2024/12/04 17:17:39 by luigi            ###   ########.fr       */
+/*   Updated: 2024/12/15 18:41:16 by luigi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,15 @@ bool	is_space(char c)
 	return ((c >= 9 && c <= 13) || (c == 32));
 }
 
-char	sanity_check(char *str)
+bool	is_digit(char c)
 {
-	//check negatives
-	//check if number is legit
-	//check for INT_MAX
+	return (c >= '0' && c <= '9');
+}
+
+const char	*sanity_check(const char *str)
+{
 	int			len;
-	const char	*number;
+	const char	*res;
 
 	len = 0;
 	while (is_space(*str))
@@ -58,11 +60,12 @@ char	sanity_check(char *str)
 	if (*str == '+')
 		str++;
 	else if (*str == '-')
-		error_exit()
-	while (*str)
-		len++;
+		error_exit("Error: only positive numbers allowed", 2);
+	if (!is_digit(*str))
+		error_exit("Error: it's not a correct digit", 2);
 	if (len > 10)
-		return (NULL);
+		error_exit("Error: INT_MAX is the limit", 2);
+	return (res);
 }
 
 int	ft_atol(const char *str)
@@ -71,5 +74,17 @@ int	ft_atol(const char *str)
 
 	number = 0;
 	str = sanity_check(str);
+	while (is_digit(*str))
+		number = (number * 10) + (*str++ - '0');
+	if (number > INT_MAX)
+		error_exit("Error: INT_MAX is the limit", 2);
 	return (number);
+}
+
+long long	get_time(void)
+{
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return (time.tv_sec * 1000 + time.tv_sec / 1000);
 }

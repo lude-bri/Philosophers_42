@@ -44,26 +44,13 @@
 typedef pthread_mutex_t t_mtx;
 typedef struct s_table	t_table;
 
-//fork == mutex
-//forks structs
-typedef struct s_fork 
-{
-	t_mtx	fork;
-	int		fork_id;
-}			t_fork;
-
 //philosophers struct
 typedef struct s_philo 
 {
-	//philosophers id
 	int			id;
 	pthread_t	*thread_id;
-
-	//left fork
-	t_fork		*left_fork;
-	//right right
-	t_fork		*right_fork;
-	
+	int			left_fork;
+	int			right_fork;
 	long		meals_counter;
 	long		last_meal_time; //check if philo has died
 	bool		full;
@@ -72,14 +59,19 @@ typedef struct s_philo
 
 typedef struct s_table
 {
-	long		philo_number;
 	long		time_to_die;
 	long		time_to_sleep;
 	long		time_to_eat;
 	long		nbr_limit_meals;
-	long		start_simulation;
-	long		end_simulation;
-	t_fork		*forks;
+	long		nbr_of_philos;
+	long		nbr_philos_full;
+	long		start_meal;
+	long		end_meal;
+	t_mtx		start_mtx;
+	t_mtx		eat_mtx;
+	t_mtx		end_mtx;
+	t_mtx		print_mtx;
+	t_mtx		*forks;
 	t_philo		*philos;
 }				t_table;
 
@@ -92,18 +84,25 @@ typedef struct s_table
 // ============ //
 
 //110_init.c
-void	init_philo(int ac, char **av, t_philo *philo, t_table *table);
-void	build_philo(char **av, t_philo *philo);
-void	build_philo_plus(char **av, t_philo *philo);
+void	init_table(int ac, char **av, t_philo *philo, t_table *table);
+void	init_philo_n_forks(t_table *table);
+void	init_mutexes(t_table *table);
+void	prepare_table(t_table *table, int i);
 
 //111_init_utils.c
-int		ft_atoi(const char *nprt);
-int		ft_atol(const char *str);
-char	sanity_check(char *str);
-bool	is_space(char c);
+int			ft_atoi(const char *nprt);
+int			ft_atol(const char *str);
+const char	*sanity_check(const char *str);
+bool		is_space(char c);
+bool		is_digit(char c);
+long long	get_time(void);
+
+//200_start.c
+void	start_philo(t_table *table);
+
 
 //800_error.c
-char	error_exit(char *error_msg, int error_no);
+void	error_exit(char *error_msg, int error_no);
 
 //900_free.c
 void	kill_philo(t_philo *philo, t_table *table);

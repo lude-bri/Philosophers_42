@@ -6,50 +6,68 @@
 /*   By: luigi <luigi@student.42porto.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:26:07 by luigi             #+#    #+#             */
-/*   Updated: 2024/12/04 17:33:21 by luigi            ###   ########.fr       */
+/*   Updated: 2024/12/15 19:05:12 by luigi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-static void	*creating_philos(void *data)
+void	init_table(int ac, char **av, t_philo *philo, t_table *table)
 {
-	(void)data;
-	printf("A Philosopher is BORN!\n");
-	sleep(3);
-	printf("A Philosopher is TIRED!\n");
-	return (NULL);
-}
-
-void	build_philo_plus(char **av, t_philo *philo)
-{
-	(void)av;
-	(void)philo;
-}
-
-void	build_philo(char **av, t_philo *philo)
-{
-	int			size;
-	int			i;
-
-	size = ft_atoi(av[1]);
-	philo->thread_id = malloc(sizeof(pthread_t) * size);
-	if (size <= 200)
-	{	
-		i = 0;
-		while (i++ < size)
-			pthread_create(philo->thread_id + i, NULL, creating_philos, NULL);
-		i = 0;
-		while (i++ < size)
-			pthread_join(philo->thread_id[i], NULL);
-	}
-}
-
-void	init_philo(int ac, char **av, t_philo *philo, t_table *table)
-{
-	table->philo_number = ft_atol(av[1]);
-	if (ac == 6)
-		build_philo_plus(av, philo);
+	table->nbr_of_philos = ft_atol(av[1]);
+	table->time_to_die = ft_atol(av[2]) * 1000;
+	table->time_to_eat = ft_atol(av[3]) * 1000;
+	table->time_to_sleep = ft_atol(av[4]) * 1000;
+	if (table->time_to_die < 60000
+		|| table->time_to_eat < 60000
+		|| table->time_to_sleep < 6000)
+		error_exit("Error: wrong timestamp", 2);
+	if (av[5])
+		table->nbr_limit_meals = ft_atol(av[5]);
 	else
-		build_philo(av, philo);
+		table->nbr_limit_meals = -1;
+	table->nbr_philos_full = 0;
+	table->start_meal = get_time();
+	table->end_meal = 0;
+	init_philo_n_forks(table);
+	init_mutexes(table);
+}
+
+void	init_philo_n_forks(t_table *table)
+{
+	int		i;
+
+	i = -1;
+	table->philos = malloc(sizeof(t_philo) * table->nbr_of_philos);
+	if (!table->philos)
+		error_exit("Error: Malloc failed", 2);
+	table->forks = malloc(sizeof(t_mtx) * table->nbr_of_philos);
+	if (!table->forks)
+		error_exit("Error: Malloc failed", 2);
+	while (++i < table->nbr_of_philos)
+		prepare_table(table, i);
+}
+
+void	prepare_table(t_table *table, int i)
+{
+	table->philos[i].id = i + 1;
+	table->philos[i].right_fork = i;
+	table->philos[i].left_fork = (i + 1) % table->nbr_of_philos;
+	table->philos[i].table = table;
+	table->philos[i].meals_counter = 0;
+	table->philos[i].last_meal_time = table->start_meal;
+	if (pthread_mutex_init(&table->forks[i], NULL))
+		error_exit("Error: Mutexes init failed", 2);
+}
+
+void	init_mutexes(t_table *table)
+{
+	if (pthread_mutex_init(&table->start_mtx, NULL))
+		error_exit("Error: mutex", 2);
+	if (pthread_mutex_init(&table->eat_mtx, NULL))
+		error_exit("Error: mutex", 2);
+	if (pthread_mutex_init(&table->end_mtx, NULL))
+		error_exit("Error: mutex", 2);
+	if (pthread_mutex_init(&table->print_mtx, NULL))
+		error_exit("Error: mutex", 2);
 }
