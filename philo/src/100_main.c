@@ -6,7 +6,7 @@
 /*   By: luigi <luigi@student.42porto.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:46:51 by luigi             #+#    #+#             */
-/*   Updated: 2024/12/15 19:06:41 by luigi            ###   ########.fr       */
+/*   Updated: 2024/12/15 19:12:52 by luigi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	main(int ac, char **av)
 	{
 		memset(&table, 0, sizeof(t_table));
 		init_table(av, &table);
+		start_philo(&table);
 		//when all philos are full or one died (otherwise it will be endless)
 		// kill_philo();
 	}

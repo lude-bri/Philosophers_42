@@ -99,7 +99,16 @@ long long	get_time(void);
 
 //200_start.c
 void	start_philo(t_table *table);
+void	*start_meal(void *data);
 
+//210_action.c
+void	philo_do(t_philo *philo, long long time, char *action);
+void	philo_eat(t_philo *philo);
+void	philo_sleep(t_philo *philo, t_table *table);
+
+
+//300_monitor.c
+int		ended_meal(t_table *table);
 
 //800_error.c
 void	error_exit(char *error_msg, int error_no);
