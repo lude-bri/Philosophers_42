@@ -15,12 +15,12 @@
 void	init_table(char **av, t_table *table)
 {
 	table->nbr_of_philos = ft_atol(av[1]);
-	table->time_to_die = ft_atol(av[2]) * 1000;
-	table->time_to_eat = ft_atol(av[3]) * 1000;
-	table->time_to_sleep = ft_atol(av[4]) * 1000;
-	if (table->time_to_die < 60000
-		|| table->time_to_eat < 60000
-		|| table->time_to_sleep < 6000)
+	table->time_to_die = ft_atol(av[2]);
+	table->time_to_eat = ft_atol(av[3]);
+	table->time_to_sleep = ft_atol(av[4]);
+	if (table->time_to_die < 100
+		|| table->time_to_eat < 100
+		|| table->time_to_sleep < 100)
 		error_exit("Error: wrong timestamp", 2);
 	if (av[5])
 		table->nbr_limit_meals = ft_atol(av[5]);
