@@ -48,7 +48,7 @@ typedef struct s_table	t_table;
 typedef struct s_philo 
 {
 	int			id;
-	pthread_t	*thread_id;
+	pthread_t	thread_id;
 	int			left_fork;
 	int			right_fork;
 	long		meals_counter;

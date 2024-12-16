@@ -18,9 +18,9 @@ void	start_philo(t_table *table)
 
 	i = -1;
 	pthread_mutex_lock(&table->start_mtx);
-	while (i++ < table->nbr_of_philos)
+	while (++i < table->nbr_of_philos)
 	{
-		if (pthread_create(table->philos[i].thread_id, NULL,
+		if (pthread_create(&table->philos[i].thread_id, NULL,
 				start_meal, &table->philos[i]))
 			error_exit("Error: philo was not created", 2);
 	}
@@ -35,7 +35,7 @@ void	*start_meal(void *data)
 	philo = (t_philo *)data;
 	table = philo->table;
 	pthread_mutex_lock(&table->start_mtx);
-	pthread_mutex_unlock(&table->end_mtx);
+	pthread_mutex_unlock(&table->start_mtx);
 	if ((!philo->id % 2) || (table->nbr_of_philos % 2
 			&& table->nbr_of_philos > 1
 			&& philo->id == 1))
