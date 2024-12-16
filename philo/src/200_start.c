@@ -17,7 +17,6 @@ void	start_philo(t_table *table)
 	int	i;
 
 	i = -1;
-	// memset(table->philos, 0, sizeof(t_philo));
 	pthread_mutex_lock(&table->start_mtx);
 	while (i++ < table->nbr_of_philos)
 	{
