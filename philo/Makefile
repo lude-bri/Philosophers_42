@@ -40,6 +40,7 @@ FILES += 111_init_utils.c
 FILES += 200_start.c
 FILES += 210_action.c
 FILES += 300_monitor.c
+FILES += 310_checker.c
 FILES += 800_error.c
 FILES += 900_free.c
 
@@ -57,7 +58,7 @@ CC			= cc
 
 CFLAGS		= -Wall -Wextra -Werror
 DFLAGS		= -g 
-# DFLAGS		+= -fsanitize=address -fsanitize=leak
+DFLAGS		+= -fsanitize=address -fsanitize=leak
 
 INC			= -I $(INCLUDE_PATH)
 

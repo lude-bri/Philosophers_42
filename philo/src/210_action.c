@@ -71,6 +71,6 @@ void	philo_sleep(t_philo *philo, t_table *table)
 		philo_do(philo, table->time_to_eat, "is thinking");
 	else
 		philo_do(philo, (table->time_to_die
-		   - (table->time_to_eat + table->time_to_sleep
-				+ table->nbr_of_philos)), "is thinking");
+				- (table->time_to_eat + table->time_to_sleep
+					+ table->nbr_of_philos)), "is thinking");
 }

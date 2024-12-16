@@ -32,7 +32,7 @@ int	check_philo_status(t_philo *philo)
 	pthread_mutex_unlock(&table->eat_mtx);
 	if (check_philo_full(philo))
 		return (1);
-	return(0);
+	return (0);
 }
 
 int	check_philo_full(t_philo *philo)
@@ -43,7 +43,8 @@ int	check_philo_full(t_philo *philo)
 	table = philo->table;
 	res = 0;
 	pthread_mutex_lock(&table->eat_mtx);
-	if (table->nbr_limit_meals != -1 && philo->meals_counter >= table->nbr_limit_meals)
+	if (table->nbr_limit_meals != -1
+		&& philo->meals_counter >= table->nbr_limit_meals)
 	{
 		pthread_mutex_unlock(&table->eat_mtx);
 		pthread_mutex_lock(&table->end_mtx);
@@ -55,7 +56,7 @@ int	check_philo_full(t_philo *philo)
 		}
 		pthread_mutex_unlock(&table->end_mtx);
 	}
-	else	
+	else
 		pthread_mutex_unlock(&table->eat_mtx);
 	return (res);
 }
