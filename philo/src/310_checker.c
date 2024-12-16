@@ -24,9 +24,9 @@ int	check_philo_status(t_philo *philo)
 	{
 		philo_do(philo, 0, "died");
 		pthread_mutex_unlock(&table->eat_mtx);
-		pthread_mutex_lock(&table->eat_mtx);
+		pthread_mutex_lock(&table->end_mtx);
 		table->end_meal = 1;
-		pthread_mutex_unlock(&table->eat_mtx);
+		pthread_mutex_unlock(&table->end_mtx);
 		return (1);
 	}
 	pthread_mutex_unlock(&table->eat_mtx);
