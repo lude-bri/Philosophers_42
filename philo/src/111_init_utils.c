@@ -60,11 +60,11 @@ const char	*sanity_check(const char *str)
 	if (*str == '+')
 		str++;
 	else if (*str == '-')
-		error_exit("Error: only positive numbers allowed", 2);
+		error_exit("Error: only positive numbers allowed", 2, NULL, 0);
 	if (!is_digit(*str))
-		error_exit("Error: it's not a correct digit", 2);
+		error_exit("Error: it's not a correct digit", 2, NULL, 0);
 	if (len > 10)
-		error_exit("Error: INT_MAX is the limit", 2);
+		error_exit("Error: INT_MAX is the limit", 2, NULL, 0);
 	res = str;
 	return (res);
 }
@@ -78,8 +78,37 @@ int	ft_atol(const char *str)
 	while (is_digit(*str))
 		number = (number * 10) + (*str++ - '0');
 	if (number > INT_MAX)
-		error_exit("Error: INT_MAX is the limit", 2);
+		error_exit("Error: INT_MAX is the limit", 2, NULL, 0);
 	return (number);
+}
+
+long long	ft_atoll(char *str, int i, long long res)
+{
+	int	sig;
+
+	sig = 1;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sig = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		if (res > (LLONG_MAX / 10)
+			|| (res == LLONG_MAX / 10 && (str[i] - '0') > (LLONG_MAX % 10)))
+		{
+			if (sig == 1)
+				return (LLONG_MAX);
+			else
+				return (LLONG_MIN);
+		}
+		res = res * 10 + (str[i] - '0');
+		i++;
+	}
+	return (res * sig);
 }
 
 long long	get_time(void)
@@ -87,5 +116,5 @@ long long	get_time(void)
 	struct timeval	time;
 
 	gettimeofday(&time, NULL);
-	return (time.tv_sec * 1000 + time.tv_sec / 1000);
+	return (time.tv_sec * 1e3 + time.tv_usec / 1e3);
 }

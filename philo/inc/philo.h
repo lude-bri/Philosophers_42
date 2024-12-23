@@ -92,6 +92,7 @@ void	prepare_table(t_table *table, int i);
 //111_init_utils.c
 int			ft_atoi(const char *nprt);
 int			ft_atol(const char *str);
+long long	ft_atoll(char *str, int i, long long res);
 const char	*sanity_check(const char *str);
 bool		is_space(char c);
 bool		is_digit(char c);
@@ -115,10 +116,11 @@ int		check_philo_status(t_philo *philo);
 int		check_philo_full(t_philo *philo);
 
 //800_error.c
-void	error_exit(char *error_msg, int error_no);
+void	error_exit(char *error_msg, int error_no, t_table *table, 
+				int error_code);
 
 //900_free.c
-void	kill_philo(t_table *table);
+void	kill_philo(t_table *table, int error_code);
 
 
 #endif

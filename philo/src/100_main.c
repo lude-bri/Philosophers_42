@@ -42,7 +42,7 @@ int	main(int ac, char **av)
 		init_table(av, &table);
 		start_philo(&table);
 		meal_monitor(&table);
-		kill_philo(&table);
+		kill_philo(&table, 3);
 	}
 	else
 		printf("Error: try n_of_philo time_to_die time_to_eat time_to_sleep\n");

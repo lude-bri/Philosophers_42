@@ -14,21 +14,23 @@
 
 void	init_table(char **av, t_table *table)
 {
-	table->nbr_of_philos = ft_atol(av[1]);
-	table->time_to_die = ft_atol(av[2]);
-	table->time_to_eat = ft_atol(av[3]);
-	table->time_to_sleep = ft_atol(av[4]);
-	if (table->time_to_die < 100
-		|| table->time_to_eat < 100
-		|| table->time_to_sleep < 100)
-		error_exit("Error: wrong timestamp", 2);
+	table->nbr_of_philos = ft_atoi(av[1]);
+	table->time_to_die = ft_atoll(av[2], 0, 0);
+	table->time_to_eat = ft_atoll(av[3], 0, 0);
+	table->time_to_sleep = ft_atoll(av[4], 0, 0);
+	if (table->time_to_die < 1
+		|| table->time_to_eat < 1
+		|| table->time_to_sleep < 1)
+		error_exit("Error: wrong timestamp", 2, NULL, 0);
 	if (av[5])
-		table->nbr_limit_meals = ft_atol(av[5]);
+		table->nbr_limit_meals = ft_atoll(av[5], 0, 0);
 	else
 		table->nbr_limit_meals = -1;
 	table->nbr_philos_full = 0;
 	table->start_meal = get_time();
 	table->end_meal = 0;
+	table->philos = NULL;
+	table->forks = NULL;
 	init_philo_n_forks(table);
 	init_mutexes(table);
 }
@@ -40,10 +42,10 @@ void	init_philo_n_forks(t_table *table)
 	i = -1;
 	table->philos = malloc(sizeof(t_philo) * table->nbr_of_philos);
 	if (!table->philos)
-		error_exit("Error: Malloc failed", 2);
+		error_exit("Error: Malloc failed", 2, table, 0);
 	table->forks = malloc(sizeof(t_mtx) * table->nbr_of_philos);
 	if (!table->forks)
-		error_exit("Error: Malloc failed", 2);
+		error_exit("Error: Malloc failed", 2, table, 1);
 	while (++i < table->nbr_of_philos)
 		prepare_table(table, i);
 }
@@ -57,17 +59,17 @@ void	prepare_table(t_table *table, int i)
 	table->philos[i].meals_counter = 0;
 	table->philos[i].last_meal_time = table->start_meal;
 	if (pthread_mutex_init(&table->forks[i], NULL))
-		error_exit("Error: Mutexes init failed", 2);
+		error_exit("Error: Mutexes init failed", 2, table, 1);
 }
 
 void	init_mutexes(t_table *table)
 {
 	if (pthread_mutex_init(&table->start_mtx, NULL))
-		error_exit("Error: mutex", 2);
+		error_exit("Error: mutex", 2, table, 1);
 	if (pthread_mutex_init(&table->eat_mtx, NULL))
-		error_exit("Error: mutex", 2);
+		error_exit("Error: mutex", 2, table, 1);
 	if (pthread_mutex_init(&table->end_mtx, NULL))
-		error_exit("Error: mutex", 2);
+		error_exit("Error: mutex", 2, table, 1);
 	if (pthread_mutex_init(&table->print_mtx, NULL))
-		error_exit("Error: mutex", 2);
+		error_exit("Error: mutex", 2, table, 1);
 }

@@ -22,7 +22,7 @@ void	start_philo(t_table *table)
 	{
 		if (pthread_create(&table->philos[i].thread_id, NULL,
 				start_meal, &table->philos[i]))
-			error_exit("Error: philo was not created", 2);
+			error_exit("Error: philo was not created", 2, table, 2);
 	}
 	pthread_mutex_unlock(&table->start_mtx);
 }
@@ -36,7 +36,7 @@ void	*start_meal(void *data)
 	table = philo->table;
 	pthread_mutex_lock(&table->start_mtx);
 	pthread_mutex_unlock(&table->start_mtx);
-	if ((!philo->id % 2) || (table->nbr_of_philos % 2
+	if ((!(philo->id % 2)) || (table->nbr_of_philos % 2
 			&& table->nbr_of_philos > 1
 			&& philo->id == 1))
 		philo_do(philo, philo->table->time_to_eat,

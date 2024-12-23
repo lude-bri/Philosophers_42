@@ -12,8 +12,10 @@
 
 #include "../inc/philo.h"
 
-void	error_exit(char *error_msg, int error_no)
+void	error_exit(char *error_msg, int error_no, t_table *table, int error_code)
 {
 	printf("%s\n", error_msg);
 	exit(error_no);
+	if (error_code)
+		kill_philo(table, error_code);
 }
