@@ -6,7 +6,7 @@
 /*   By: luigi <luigi@student.42porto.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:44:03 by luigi             #+#    #+#             */
-/*   Updated: 2024/12/04 16:57:06 by luigi            ###   ########.fr       */
+/*   Updated: 2024/12/23 12:15:29 by luigi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,12 @@ void	prepare_table(t_table *table, int i);
 
 //111_init_utils.c
 int			ft_atoi(const char *nprt);
-int			ft_atol(const char *str);
-long long	ft_atoll(char *str, int i, long long res);
-const char	*sanity_check(const char *str);
 bool		is_space(char c);
 bool		is_digit(char c);
+
+//112_init_utils.c
+int			ft_atol(const char *str);
+const char	*sanity_check(const char *str);
 long long	get_time(void);
 
 //200_start.c

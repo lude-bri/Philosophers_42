@@ -26,7 +26,8 @@ void	philo_do(t_philo *philo, long long time, char *action)
 		return ;
 	}
 	if (*action)
-		printf("%lld %d %s\n", get_time() - philo->table->start_meal, philo->id, action);
+		printf("%lld %d %s\n", get_time() - philo->table->start_meal,
+			philo->id, action);
 	pthread_mutex_unlock(&philo->table->print_mtx);
 	if (time > 0)
 		while (get_time() - start < time)

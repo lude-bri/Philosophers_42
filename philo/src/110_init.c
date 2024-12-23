@@ -15,15 +15,15 @@
 void	init_table(char **av, t_table *table)
 {
 	table->nbr_of_philos = ft_atoi(av[1]);
-	table->time_to_die = ft_atoll(av[2], 0, 0);
-	table->time_to_eat = ft_atoll(av[3], 0, 0);
-	table->time_to_sleep = ft_atoll(av[4], 0, 0);
+	table->time_to_die = ft_atol(av[2]);
+	table->time_to_eat = ft_atol(av[3]);
+	table->time_to_sleep = ft_atol(av[4]);
 	if (table->time_to_die < 1
 		|| table->time_to_eat < 1
 		|| table->time_to_sleep < 1)
 		error_exit("Error: wrong timestamp", 2, NULL, 0);
 	if (av[5])
-		table->nbr_limit_meals = ft_atoll(av[5], 0, 0);
+		table->nbr_limit_meals = ft_atol(av[5]);
 	else
 		table->nbr_limit_meals = -1;
 	table->nbr_philos_full = 0;
