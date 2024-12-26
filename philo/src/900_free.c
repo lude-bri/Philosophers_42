@@ -29,9 +29,9 @@ static void	destroy_mutexes(t_table *table, int error_code)
 	if (error_code >= 1)
 	{
 		pthread_mutex_destroy(&table->start_mtx);
-		pthread_mutex_destroy(&table->end_mtx);
 		pthread_mutex_destroy(&table->print_mtx);
 		pthread_mutex_destroy(&table->eat_mtx);
+		pthread_mutex_destroy(&table->end_mtx);
 	}
 }
 

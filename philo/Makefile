@@ -59,7 +59,7 @@ CC			= cc
 
 CFLAGS		= -Wall -Wextra -Werror
 DFLAGS		= -g 
-# DFLAGS		+= -fsanitize=address -fsanitize=leak
+DFLAGS		+= -fsanitize=thread
 
 INC			= -I $(INCLUDE_PATH)
 

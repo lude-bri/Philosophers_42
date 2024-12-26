@@ -16,7 +16,7 @@ static void	eat(t_table *table, t_philo *philo);
 
 void	philo_do(t_philo *philo, long long time, char *action)
 {
-	long	start;
+	long long	start;
 
 	start = get_time();
 	pthread_mutex_lock(&philo->table->print_mtx);
@@ -30,7 +30,7 @@ void	philo_do(t_philo *philo, long long time, char *action)
 			philo->id, action);
 	pthread_mutex_unlock(&philo->table->print_mtx);
 	if (time > 0)
-		while (get_time() - start < time)
+		while ((get_time() - start < time))
 			usleep(100);
 }
 
@@ -39,7 +39,7 @@ void	philo_eat(t_philo *philo)
 	t_table		*table;
 
 	table = philo->table;
-	if (table->nbr_of_philos % 2)
+	if (philo->id % 2)
 	{
 		pthread_mutex_lock(&table->forks[philo->right_fork]);
 		pthread_mutex_lock(&table->forks[philo->left_fork]);

@@ -1,14 +1,6 @@
-==621530== Memcheck, a memory error detector
-==621530== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==621530== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==621530== Command: ./philo
-==621530== Parent PID: 615902
-==621530== 
-==621530== (action at startup) vgdb me ... 
-==621530== 
-==621530== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==621530==   /path/to/gdb ./philo
-==621530== and then give GDB the following command
-==621530==   target remote | /usr/bin/vgdb --pid=621530
-==621530== --pid is optional if only one valgrind process is running
-==621530== 
+==225940== Helgrind, a thread error detector
+==225940== Copyright (C) 2007-2017, and GNU GPL'd, by OpenWorks LLP et al.
+==225940== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==225940== Command: ./philo
+==225940== Parent PID: 217005
+==225940== 
