@@ -12,6 +12,10 @@
 
 #include "../inc/philo.h"
 
+//Safely destroy mutexes and free forks resources.
+//Ensures proper cleanup on the error code.
+//@table: pointer to the main struct
+//@error_code: indicates the level of cleanup required
 static void	destroy_mutexes(t_table *table, int error_code)
 {
 	int		i;
@@ -35,6 +39,8 @@ static void	destroy_mutexes(t_table *table, int error_code)
 	}
 }
 
+//Cleans up all the philosopher-related resources.
+//Joins threads, destroy mutexes, and free memories
 void	kill_philo(t_table *table, int error_code)
 {
 	int		i;

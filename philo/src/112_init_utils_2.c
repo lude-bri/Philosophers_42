@@ -12,6 +12,8 @@
 
 #include "../inc/philo.h"
 
+//Validates and sanitizes a numeric string input.
+//Ensures the input is a positive number and within allowed constraints
 const char	*sanity_check(const char *str)
 {
 	int			len;
@@ -32,6 +34,8 @@ const char	*sanity_check(const char *str)
 	return (res);
 }
 
+//Convert a sanitized numeric argument to a long integer.
+//Ensures the values does not exceed INT_MAX
 int	ft_atol(const char *str)
 {
 	long	number;
@@ -45,6 +49,8 @@ int	ft_atol(const char *str)
 	return (number);
 }
 
+//Retrieves the current time in milliseconds
+//Combines seconds and microseconds for milliseconds precision
 long long	get_time(void)
 {
 	struct timeval	time;

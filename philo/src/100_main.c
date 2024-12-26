@@ -31,7 +31,6 @@
 //at least number_of_times_each_philosopher_must_eat times, 
 //the simulation stops.
 // if not specified, the simulation stops when a philo dies.
-
 int	main(int ac, char **av)
 {
 	t_table		table;

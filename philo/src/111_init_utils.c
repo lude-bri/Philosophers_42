@@ -12,6 +12,7 @@
 
 #include "../inc/philo.h"
 
+//Transform char into int
 int	ft_atoi(const char *nprt)
 {
 	int	i;
@@ -40,11 +41,13 @@ int	ft_atoi(const char *nprt)
 	return (result * sign);
 }
 
+//Verify if there is spaces
 bool	is_space(char c)
 {
 	return ((c >= 9 && c <= 13) || (c == 32));
 }
 
+//Verify if there is digits
 bool	is_digit(char c)
 {
 	return (c >= '0' && c <= '9');

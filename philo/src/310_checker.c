@@ -12,6 +12,8 @@
 
 #include "../inc/philo.h"
 
+//Check if a philosopher has died or is full
+//Updates the simulation status if necessary
 int	check_philo_status(t_philo *philo)
 {
 	t_table		*table;
@@ -35,6 +37,8 @@ int	check_philo_status(t_philo *philo)
 	return (SUCCESS);
 }
 
+//Check if a philosopher has eaten enough meals.
+//Updates the simulation status if all philosophers are full.
 int	check_philo_full(t_philo *philo)
 {
 	t_table		*table;

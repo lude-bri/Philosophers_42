@@ -12,6 +12,8 @@
 
 #include "../inc/philo.h"
 
+//Initializes the simulation table and validates input arguments.
+//Allocate resources and prepare the philosophers and forks.
 void	init_table(char **av, t_table *table)
 {
 	table->nbr_of_philos = ft_atoi(av[1]);
@@ -38,6 +40,8 @@ void	init_table(char **av, t_table *table)
 	init_mutexes(table);
 }
 
+//Allocates memory for philosophers and forks.
+//Prepares individual philosophers structures and their associated forks.
 void	init_philo_n_forks(t_table *table)
 {
 	int		i;
@@ -53,6 +57,7 @@ void	init_philo_n_forks(t_table *table)
 		prepare_table(table, i);
 }
 
+//Sets up a philosopher's attributes and initializes their forks
 void	prepare_table(t_table *table, int i)
 {
 	table->philos[i].id = i + 1;
@@ -65,6 +70,7 @@ void	prepare_table(t_table *table, int i)
 		error_exit("Error: Mutexes init failed", STD_ERR, table, MUTEX);
 }
 
+//Initializes additional mutexes used for synchronization
 void	init_mutexes(t_table *table)
 {
 	if (pthread_mutex_init(&table->start_mtx, NULL))

@@ -14,6 +14,8 @@
 
 static void	eat(t_table *table, t_philo *philo);
 
+//Handles a philospher's action and its duration
+//Prints the action and delays execution for the specified time
 void	philo_do(t_philo *philo, long long time, char *action)
 {
 	long long	start;
@@ -34,6 +36,8 @@ void	philo_do(t_philo *philo, long long time, char *action)
 			usleep(100);
 }
 
+//Manages the philosopher's eating action.
+//Locks the appropriate forks and calls to 'eat' function
 void	philo_eat(t_philo *philo)
 {
 	t_table		*table;
@@ -52,6 +56,8 @@ void	philo_eat(t_philo *philo)
 	eat(table, philo);
 }
 
+//Executes the eating routine for a philosopher.
+//Prints the action, update meal data, and unlock forks.
 static void	eat(t_table *table, t_philo *philo)
 {
 	philo_do(philo, 0, "has taken a fork");
@@ -65,6 +71,7 @@ static void	eat(t_table *table, t_philo *philo)
 	pthread_mutex_unlock(&table->forks[philo->right_fork]);
 }
 
+//Handles the philosopher's spleeping and subsequent thinking actions
 void	philo_sleep(t_philo *philo, t_table *table)
 {
 	philo_do(philo, table->time_to_sleep, "is sleeping");

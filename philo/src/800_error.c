@@ -12,11 +12,13 @@
 
 #include "../inc/philo.h"
 
+//Handles errors by printing a message, performing cleanup,
+//and terminating the program with the specified error code
 void	error_exit(char *error_msg, int error_no, t_table *table,
 				int error_code)
 {
 	printf("%s\n", error_msg);
-	exit(error_no);
 	if (error_code)
 		kill_philo(table, error_code);
+	exit(error_no);
 }

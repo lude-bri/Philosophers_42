@@ -12,6 +12,8 @@
 
 #include "../inc/philo.h"
 
+//Monitors the status of all philosophers during the simulation.
+//Terminates the simulation if a philosophers dies of are full.
 void	meal_monitor(t_table *table)
 {
 	int		i;
@@ -34,6 +36,8 @@ void	meal_monitor(t_table *table)
 	}
 }
 
+//Check if the simulation has ended.
+//Returns the value of the 'end_meal' flag in a thread-safe manner
 int	ended_meal(t_table *table)
 {
 	int		ended;

@@ -12,6 +12,8 @@
 
 #include "../inc/philo.h"
 
+//Creates and initialize threads for all philosophers.
+//Ensure sync using mutex lock
 void	start_philo(t_table *table)
 {
 	int	i;
@@ -27,6 +29,8 @@ void	start_philo(t_table *table)
 	pthread_mutex_unlock(&table->start_mtx);
 }
 
+//Main routine executed by each philosopher's thread
+//Implement the philosopher's lifecycle (thinking, eating or sleeping)
 void	*start_meal(void *data)
 {
 	t_table		*table;
