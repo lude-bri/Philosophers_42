@@ -15,6 +15,8 @@
 void	init_table(char **av, t_table *table)
 {
 	table->nbr_of_philos = ft_atoi(av[1]);
+	if (table->nbr_of_philos > 200)
+		error_exit("Error: 200 philosophers is the max allowed", 2, NULL, 0);
 	table->time_to_die = ft_atol(av[2]);
 	table->time_to_eat = ft_atol(av[3]);
 	table->time_to_sleep = ft_atol(av[4]);
