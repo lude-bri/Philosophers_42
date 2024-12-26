@@ -17,15 +17,15 @@
 void	init_table(char **av, t_table *table)
 {
 	table->nbr_of_philos = ft_atoi(av[1]);
-	if (table->nbr_of_philos > 200)
+	if ((table->nbr_of_philos > 200) || (table->nbr_of_philos <= 0))
 		error_exit("Error: 200 philosophers is the max allowed", STD_ERR,
 			NULL, NONE);
 	table->time_to_die = ft_atol(av[2]);
 	table->time_to_eat = ft_atol(av[3]);
 	table->time_to_sleep = ft_atol(av[4]);
-	if (table->time_to_die < 1
-		|| table->time_to_eat < 1
-		|| table->time_to_sleep < 1)
+	if (table->time_to_die < 60
+		|| table->time_to_eat < 60
+		|| table->time_to_sleep < 60)
 		error_exit("Error: wrong timestamp", STD_ERR, NULL, NONE);
 	if (av[5])
 		table->nbr_limit_meals = ft_atol(av[5]);

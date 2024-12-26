@@ -35,12 +35,10 @@ _SEP 			= =====================
 #==============================================================================#
 
 SRC_PATH		= src
-LIBS_PATH       = lib
 INCLUDE_PATH	= includes
 BUILD_PATH		= .build
 TEMP_PATH		= .temp
 TESTS_PATH		= files
-VISUALIZER_PATH	= $(LIBS_PATH)/visualizer
 
 ### Files Source
 FILES = 100_main.c
@@ -172,7 +170,7 @@ test_input: all			## Run tests on input args
 	-./$(NAME) "  a2" 200 200 200
 	@echo "$(CYA)Test $(GRN)6$(CYA) : Argument value out of range (too many philos)$(D)"
 	-./$(NAME) 201 800 200 200 2
-	@echo "$(CYA)Test $(GRN)7$(CYA) : Argument value out of range (number of philos less oe equal to 0)$(D)"
+	@echo "$(CYA)Test $(GRN)7$(CYA) : Argument value out of range (number of philos less or equal to 0)$(D)"
 	-./$(NAME) 0 120 60 60 
 	@echo "$(CYA)Test $(GRN)8$(CYA) : Argument value out of range (time_to_die less than 60)$(D)"
 	-./$(NAME) 5 59 30 30 
@@ -319,21 +317,6 @@ count_meals:
 		tail -f $(TEMP_PATH)/out.txt; \
 	fi
 	@echo "$(YEL)$(_SEP)$(D)"
-
-visual: all 	## Run philosopher's Visualizer
-	@if test ! -d "$(VISUALIZER_PATH)"; then make get_visual; \
-	else echo "$(YEL)[$(NAME) Visualizer]$(D) folder found 🖔"; \
-	echo " $(RED)$(D) [$(GRN)Getting $(NAME) output$(D)]"; \
-	timeout $(TIMEOUT)s ./$(NAME) $(ARG) > $(TEMP_PATH)/out.txt;\
-	./$(VISUALIZER_PATH)/visualizer $(TIMESTEP) < $(TEMP_PATH)/out.txt; fi
-
-get_visual:
-	@echo "* [$(CYA)Getting $(NAME) Visualizer$(D)]"
-	git clone git@github.com:SimonCROS/philosophers-visualizer.git $(VISUALIZER_PATH)
-	@echo "* $(GRN)Visualizer download$(D): $(_SUCCESS)"
-	@echo "[$(YEL)Building $(NAME) Visualizer$(D)]"
-	$(MAKE) $(VISUALIZER_PATH)
-	@echo "[$(_SUCCESS) building $(MAG)$(NAME) Visualizer!$(D) $(YEL)🖔$(D)]"
 
 
 ##@ Debug Rules 
