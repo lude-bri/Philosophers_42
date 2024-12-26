@@ -22,7 +22,7 @@ void	start_philo(t_table *table)
 	{
 		if (pthread_create(&table->philos[i].thread_id, NULL,
 				start_meal, &table->philos[i]))
-			error_exit("Error: philo was not created", 2, table, 2);
+			error_exit("Error: philo was not created", STD_ERR, table, THREAD);
 	}
 	pthread_mutex_unlock(&table->start_mtx);
 }

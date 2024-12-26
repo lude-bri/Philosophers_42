@@ -35,8 +35,8 @@
 # define STD_ERR 2
 
 # define NONE 0
-# define MUTEXES 1
-# define THREADS 2
+# define MUTEX 1
+# define THREAD 2
 # define ALL 3
 
 // ========================================================================== //

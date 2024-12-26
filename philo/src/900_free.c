@@ -48,7 +48,8 @@ void	kill_philo(t_table *table, int error_code)
 			{
 				if (pthread_join(table->philos[i].thread_id, NULL))
 				{
-					error_exit("Error: failed to join thread", 2, table, 2);
+					error_exit("Error: failed to join thread", STD_ERR,
+						table, THREAD);
 					return ;
 				}
 			}

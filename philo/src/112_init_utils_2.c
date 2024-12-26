@@ -23,11 +23,11 @@ const char	*sanity_check(const char *str)
 	if (*str == '+')
 		str++;
 	else if (*str == '-')
-		error_exit("Error: only positive numbers allowed", 2, NULL, 0);
+		error_exit("Error: only positive numbers allowed", STD_ERR, NULL, NONE);
 	if (!is_digit(*str))
-		error_exit("Error: it's not a correct digit", 2, NULL, 0);
+		error_exit("Error: it's not a correct digit", STD_ERR, NULL, NONE);
 	if (len > 10)
-		error_exit("Error: INT_MAX is the limit", 2, NULL, 0);
+		error_exit("Error: INT_MAX is the limit", STD_ERR, NULL, NONE);
 	res = str;
 	return (res);
 }
@@ -41,7 +41,7 @@ int	ft_atol(const char *str)
 	while (is_digit(*str))
 		number = (number * 10) + (*str++ - '0');
 	if (number > INT_MAX)
-		error_exit("Error: INT_MAX is the limit", 2, NULL, 0);
+		error_exit("Error: INT_MAX is the limit", STD_ERR, NULL, NONE);
 	return (number);
 }
 
