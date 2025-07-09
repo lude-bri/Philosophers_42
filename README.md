@@ -20,7 +20,6 @@ We are going to work with concurrent algorithm, threads, mutexes and data racing
 
 # Index
 <ul>
-    <li><strong><a href="#introdution" style="color:white">Introduction</a></strong></li>
     <li><strong><a href="#1-the-dining-philosophers-problem" style="color:white">1. The dining philosophers problem</a></strong></li>
     <ul style="list-style-type:disc">
         <li><a href="#11-origins-and-context">1.1. Origins and Context</a></li>
@@ -34,16 +33,19 @@ We are going to work with concurrent algorithm, threads, mutexes and data racing
         <li><a href="#22-theoretical-foundations">2.2. Theoretical Foundations</a></li>
     </ul>
     <li><strong><a href="#3-mutexes" style="color:white">3. Mutexes</a></strong></li>
+    <ul style="list-style-type:disc">
+        <li><a href="#31-usage-in-pthread">3.1. Usage in pthread</a></li>
+    </ul>
     <li><strong><a href="#4-concurrent-algorithms-and-data-racing" style="color:white">4. Concurrent Algorithms and Data Racing</a></strong></li>
+    <ul style="list-style-type:disc">
+        <li><a href="#41-what-is-a-data-race">4.1. What is a Data Race?</a></li>
+        <li><a href="#42-designing-safe-concurrent-algorithms">4.2. Designing Safe Concurrent Algorithms</a></li>
+    </ul>
     <li><strong><a href="#conclusion" style="color:white">Conclusion</a></strong></li>
-    <li><strong><a href="#sources" style="color:white">Sources</a></strong></li>
     <li><strong><a href="#license" style="color:white">License</a></strong></li>
 </ul>
 
 <!-----------Content---------------------->
-
-# Introduction
-Threads and mutexes
 
 # 1. The Dining philosophers problem
 
@@ -181,10 +183,56 @@ In many systems:
 
 
 # 3. Mutexes
+Mutexes, short for mutual exclusions, are essential synchronization mechanisms used to prevent multiple threads from simultaneously accessing shared resources, thereby avoiding unpredictable behavior and data races.
+
+A mutex functions like a lock: only one thread can hold it at a time. When a thread needs access to a shared resource (such as a global variable or a critical section of code), it attempts to acquire the associated mutex. If another thread already holds the mutex, the requesting thread will be blocked until the mutex is released.
+
+## 3.1. Usage in pthread
+In the `pthread` library, mutexes are implemented via the `pthread_mutex_t` type. To use a mutex, it must first be initialized (typically with `pthread_mutex_init()` or statically via `PTHREAD_MUTEX_INITIALIZER`). Once initialized, a mutex can be locked and unlocked using:
+
+* `pthread_mutex_lock(&mutex)`: Locks the mutex. If it is already locked, the calling thread will wait.
+
+* `pthread_mutex_unlock(&mutex)`: Unlocks the mutex, allowing another waiting thread to acquire it.
+
+* `pthread_mutex_destroy(&mutex)`: Destroys the mutex object when it is no longer needed.
+
+
 
 # 4. Concurrent Algorithms and Data Racing
+Concurrency introduces a fundamental shift in algorithm design. Unlike sequential algorithms that assume exclusive control over the processor, concurrent algorithms must account for interleaving operations, resource sharing, and synchronization.
+
+## 4.1. What is a Data Race?
+A data race occurs when two or more threads access a shared variable concurrently, and at least one of the accesses is a write, without proper synchronization. This leads to undefined behavior, as the outcome of the program becomes dependent on the unpredictable timing of thread execution.
+
+Example:
+
+```c
+// Potential data race
+shared_var += 1;
+```
+If multiple threads execute this line without a mutex, they might read and write the value simultaneously, leading to inconsistent or incorrect results.
+
+## 4.2. Designing Safe Concurrent Algorithms
+
+To prevent data races and ensure consistency, concurrent algorithms typically rely on one or more of the following techniques:
+
+* **Mutexes and Locks**: Enforce exclusive access to shared data.
+
+* **Atomic Operations**: Perform read-modify-write operations indivisibly, avoiding the need for locks.
+
+* **Condition Variables**: Allow threads to wait for specific conditions to be met before proceeding.
+
+* **Lock-Free Algorithms**: Avoid traditional locking by using atomic primitives (like compare-and-swap) to coordinate between threads efficiently.
+
+Each strategy has trade-offs between performance, complexity, and safety. In the context of the Dining Philosophers Problem, mutexes are often used to represent forks. Proper algorithm design ensures that philosophers acquire forks (mutexes) in a way that prevents deadlocks and starvation.
 
 # Conclusion
+
+The Dining Philosophers Problem is more than a theoretical challenge; it is a practical gateway to understanding core concepts in concurrent programming. Through the metaphor of philosophers competing for shared forks, it exposes deep insights into synchronization, resource allocation, and algorithmic fairness.
+
+By studying threads, we understand how modern systems achieve parallelism and responsiveness. With mutexes, we learn to coordinate access to shared data safely. And through careful design of concurrent algorithms, we avoid the dangers of data races and deadlocks, ensuring system stability and efficiency.
+
+Solving the 42 version of the Dining Philosophers Problem is not merely about implementing code—it is about grasping the delicate balance between freedom and coordination in concurrent environments. Mastery of these concepts is essential for any systems-level programmer, as the principles extend beyond academic problems into real-world systems, from operating systems to networked applications and beyond.
 
 ---
 
